@@ -11,6 +11,24 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+
+// const appRoutes: Routes = [
+//   { path: '', component: HomeComponent },
+//   { path: 'users', component: UsersComponent, children: [
+//     { path: ':id/:name', component: UserComponent }
+//   ]},
+//   { path: 'servers', component: ServersComponent, children: [
+//     { path: ':id', component: ServerComponent},
+//     { path: ':id/edit', component: EditServerComponent}
+//   ]},
+//   { path: 'not-found', component: PageNotFoundComponent},
+//   { path: '**', redirectTo: '/not-found'}
+// ];
 
 @NgModule({
   declarations: [
@@ -20,14 +38,17 @@ import { ServersService } from './servers/servers.service';
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    // RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
