@@ -19,6 +19,7 @@ import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './servers/server/server-resolver.service';
+import { UsersService } from './users/users.service';
 
 // const appRoutes: Routes = [
 //   { path: '', component: HomeComponent },
@@ -52,7 +53,7 @@ import { ServerResolver } from './servers/server/server-resolver.service';
     // RouterModule.forRoot(appRoutes)
     AppRoutingModule
   ],
-  providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard, ServerResolver],
+  providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard, ServerResolver, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
